@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luqman Printers — Premium Printing & Craft</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#c8102e;--red-dark:#9b0c22;--red-light:#e8192f;
+  --black:#0a0a0a;--black2:#141414;--black3:#1e1e1e;
+  --gray:#2a2a2a;--gray2:#3a3a3a;--muted:#888;--light:#ccc;--white:#f5f5f5;
+  --serif:'Bebas Neue',Impact,sans-serif;--sans:'Barlow',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--black);color:var(--white);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--red)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;height:68px;background:rgba(10,10,10,0.96);border-bottom:1px solid rgba(200,16,46,0.35);backdrop-filter:blur(10px)}
+.nav-logo{font-family:var(--serif);font-size:1.9rem;color:var(--white);text-decoration:none;letter-spacing:2px}
+.nav-logo span{color:var(--red)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--light);transition:color 0.2s;position:relative;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform 0.2s}
+.nav-links a:hover{color:var(--white)}.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{background:var(--red)!important;color:var(--white)!important;padding:0.5rem 1.3rem!important;border-radius:2px!important;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--red-light)!important}.nav-cta::after{display:none!important}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:100px 6vw 4rem}
+.hero-bg{position:absolute;inset:0;z-index:0;background:var(--black)}
+.hero-bg-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1585652757173-d7f66b35c13c?w=1600&q=80') center/cover no-repeat;opacity:0.18;filter:grayscale(30%)}
+.hero-bg-grad{position:absolute;inset:0;background:linear-gradient(110deg,rgba(10,10,10,1) 45%,rgba(10,10,10,0.35) 100%)}
+.hero-bg-line{position:absolute;top:0;right:27%;width:2px;height:100%;background:var(--red);opacity:0.6;transform:skewX(-6deg);box-shadow:0 0 30px rgba(200,16,46,0.5)}
+.hero-content{position:relative;z-index:1;max-width:700px}
+.hero-tag{display:inline-flex;align-items:center;gap:0.7rem;font-size:0.75rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:1.4rem}
+.hero-tag::before{content:'';width:30px;height:2px;background:var(--red)}
+.hero h1{font-family:var(--serif);font-size:clamp(4rem,9vw,8rem);line-height:0.92;color:var(--white);margin-bottom:1.4rem;letter-spacing:2px}
+.hero h1 .red{color:var(--red)}
+.hero-sub{font-size:1.05rem;color:var(--light);line-height:1.75;max-width:500px;margin-bottom:2.2rem;font-weight:300}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-red{background:var(--red);color:var(--white);padding:0.85rem 2.2rem;text-decoration:none;font-weight:600;font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;display:inline-block;border-radius:2px;border:2px solid var(--red);transition:all 0.2s}
+.btn-red:hover{background:var(--red-light);border-color:var(--red-light);transform:translateY(-2px)}
+.btn-ghost{border:2px solid rgba(255,255,255,0.3);color:var(--white);padding:0.85rem 2.2rem;text-decoration:none;font-weight:600;font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;display:inline-block;border-radius:2px;transition:all 0.2s}
+.btn-ghost:hover{border-color:var(--white);background:rgba(255,255,255,0.08)}
+.urgent-strip{display:flex;align-items:center;gap:1rem;margin-top:2.5rem;position:relative;z-index:1;flex-wrap:wrap}
+.urgent-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--red);color:var(--white);padding:0.5rem 1.1rem;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(200,16,46,0.5)}50%{box-shadow:0 0 0 10px rgba(200,16,46,0)}}
+.urgent-badge::before{content:'⚡'}
+.urgent-text{font-size:0.86rem;color:var(--muted)}
+
+/* hero photo strip right */
+.hero-photo-strip{position:absolute;right:0;top:0;bottom:0;width:29%;z-index:1;display:flex;flex-direction:column;overflow:hidden}
+.strip-photo{flex:1;overflow:hidden}
+.strip-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(30%)contrast(1.1);transition:filter 0.4s;display:block}
+.strip-photo img:hover{filter:grayscale(0%)}
+.strip-divider{height:3px;background:var(--black);flex-shrink:0}
+
+/* STATS */
+.stats-bar{background:var(--red);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{text-align:center;padding:1.6rem 1rem;border-right:1px solid rgba(0,0,0,0.2)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:var(--serif);font-size:2.6rem;color:var(--white);line-height:1}
+.stat-label{font-size:0.72rem;color:rgba(255,255,255,0.75);margin-top:0.3rem;letter-spacing:0.08em;text-transform:uppercase}
+
+/* SECTION COMMON */
+section{padding:6rem 6vw}
+.section-tag{font-size:0.73rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.7rem;display:flex;align-items:center;gap:0.7rem}
+.section-tag::before{content:'';width:26px;height:2px;background:var(--red)}
+.section-title{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);line-height:1;color:var(--white);margin-bottom:1rem;letter-spacing:1px}
+.section-sub{font-size:0.98rem;color:var(--muted);line-height:1.75;max-width:530px;font-weight:300}
+
+/* SERVICES */
+#services{background:var(--black2)}
+.services-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem}
+.services-intro-right p{font-size:0.92rem;color:var(--muted);line-height:1.75;font-weight:300;text-align:right;max-width:360px;margin-left:auto}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(200,16,46,0.12)}
+.service-card{background:var(--black2);padding:2.5rem 2rem;position:relative;overflow:hidden;cursor:default;transition:all 0.3s;border:1px solid transparent}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform 0.35s}
+.service-card:hover{background:var(--black3);border-color:rgba(200,16,46,0.2)}.service-card:hover::before{transform:scaleX(1)}
+.service-num{font-family:var(--serif);font-size:5rem;color:var(--red);opacity:0.07;position:absolute;top:-10px;right:16px;line-height:1;pointer-events:none;transition:opacity 0.3s}
+.service-card:hover .service-num{opacity:0.13}
+.service-icon-wrap{width:50px;height:50px;border:2px solid rgba(200,16,46,0.4);display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;transition:all 0.3s}
+.service-card:hover .service-icon-wrap{border-color:var(--red);background:rgba(200,16,46,0.1)}
+.service-icon-wrap svg{width:22px;height:22px;stroke:var(--red);fill:none;stroke-width:1.8}
+.service-title{font-family:var(--serif);font-size:1.7rem;color:var(--white);margin-bottom:0.8rem;letter-spacing:1px}
+.service-desc{font-size:0.88rem;color:var(--muted);line-height:1.75;font-weight:300}
+.service-list{list-style:none;margin-top:1.2rem}
+.service-list li{font-size:0.84rem;color:var(--light);padding:0.33rem 0;display:flex;align-items:center;gap:0.6rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+.service-list li:last-child{border-bottom:none}
+.service-list li::before{content:'';width:6px;height:6px;background:var(--red);flex-shrink:0}
+
+/* craft sub-cards */
+.craft-sub{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.7rem;margin-top:1.3rem}
+.craft-sub-item{background:rgba(200,16,46,0.08);border:1px solid rgba(200,16,46,0.22);padding:1rem 0.7rem;text-align:center;transition:all 0.2s}
+.craft-sub-item:hover{background:rgba(200,16,46,0.16);border-color:var(--red)}
+.craft-sub-icon{font-size:1.5rem;margin-bottom:0.4rem}
+.craft-sub-name{font-size:0.74rem;font-weight:600;color:var(--white);text-transform:uppercase;letter-spacing:0.06em}
+
+/* EXTRA SERVICES */
+#extra-services{background:var(--black3)}
+.extra-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+.extra-card{border:1px solid var(--gray2);padding:2.5rem;position:relative;overflow:hidden;transition:all 0.3s}
+.extra-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.extra-card:hover{border-color:rgba(200,16,46,0.4);background:rgba(200,16,46,0.04)}.extra-card:hover::after{transform:scaleX(1)}
+.extra-label{display:inline-block;background:var(--red);color:var(--white);font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.25rem 0.8rem;margin-bottom:1.2rem}
+.extra-icon{width:58px;height:58px;border:2px solid rgba(200,16,46,0.35);display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem}
+.extra-icon svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.8}
+.extra-title{font-family:var(--serif);font-size:2rem;color:var(--white);margin-bottom:0.8rem;letter-spacing:1px}
+.extra-desc{font-size:0.9rem;color:var(--muted);line-height:1.75;font-weight:300}
+.extra-points{list-style:none;margin-top:1.2rem}
+.extra-points li{font-size:0.87rem;color:var(--light);padding:0.4rem 0;display:flex;align-items:flex-start;gap:0.7rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+.extra-points li:last-child{border-bottom:none}
+.extra-points li::before{content:'→';color:var(--red);font-size:0.78rem;margin-top:2px;flex-shrink:0}
+
+/* URGENT BANNER */
+.urgent-banner{background:var(--red);padding:2rem 6vw;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.urgent-banner h3{font-family:var(--serif);font-size:2.4rem;color:var(--white);letter-spacing:2px;line-height:1}
+.urgent-banner p{font-size:0.93rem;color:rgba(255,255,255,0.85);max-width:400px;font-weight:300;line-height:1.65}
+.btn-white{background:var(--white);color:var(--red);padding:0.9rem 2.2rem;text-decoration:none;font-weight:700;font-size:0.83rem;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;border-radius:2px;transition:all 0.2s;white-space:nowrap}
+.btn-white:hover{background:var(--black);color:var(--white)}
+
+/* PHOTO GALLERY */
+#gallery{background:var(--black);padding-bottom:0}
+.gallery-intro{margin-bottom:3rem}
+.photo-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:240px 240px;gap:4px}
+.photo-cell{overflow:hidden;position:relative;background:var(--gray)}
+.photo-cell.wide{grid-column:span 2}.photo-cell.tall{grid-row:span 2}
+.photo-cell img{width:100%;height:100%;object-fit:cover;filter:grayscale(25%)contrast(1.1);transition:all 0.5s;display:block}
+.photo-cell:hover img{filter:grayscale(0%)contrast(1.05);transform:scale(1.05)}
+.photo-overlay{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(10,10,10,0.88) 100%);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:1.2rem}
+.photo-cell:hover .photo-overlay{opacity:1}
+.photo-label{font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--white)}
+
+/* VIDEOS */
+.video-section{background:var(--black2);padding:5rem 6vw}
+.video-section .vsub{font-size:0.93rem;color:var(--muted);margin-bottom:2.5rem;font-weight:300}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--gray2);background:var(--black3)}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.video-caption{font-size:0.8rem;color:var(--muted);margin-top:0.6rem;font-weight:300}
+
+/* PROCESS */
+#process{background:var(--black2)}
+.process-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3.5rem;border:1px solid var(--gray2)}
+.process-step{padding:2.2rem 1.5rem;border-right:1px solid var(--gray2);position:relative;transition:background 0.2s}
+.process-step:last-child{border-right:none}.process-step:hover{background:rgba(200,16,46,0.05)}
+.process-arrow{position:absolute;top:50%;right:-14px;width:26px;height:26px;background:var(--red);clip-path:polygon(0 0,70% 50%,0 100%);transform:translateY(-50%);z-index:2}
+.process-step:last-child .process-arrow{display:none}
+.p-num{font-family:var(--serif);font-size:4rem;color:var(--red);opacity:0.18;line-height:1;margin-bottom:0.7rem}
+.p-title{font-weight:600;color:var(--white);margin-bottom:0.5rem;font-size:1rem}
+.p-desc{font-size:0.84rem;color:var(--muted);line-height:1.65;font-weight:300}
+
+/* MAP / LOCATION */
+#location{background:var(--black3)}
+.location-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:4rem;align-items:start}
+.map-tag{background:var(--red);color:var(--white);font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.4rem 1rem;display:inline-block;margin-bottom:1.2rem}
+.map-container{border:2px solid rgba(200,16,46,0.4);overflow:hidden}
+.map-container iframe{display:block;width:100%;height:430px;border:none;filter:grayscale(70%)contrast(1.1);transition:filter 0.4s}
+.map-container:hover iframe{filter:grayscale(0%)}
+.map-hint{font-size:0.75rem;color:var(--muted);margin-top:0.5rem;font-weight:300}
+.c-detail{display:flex;gap:1rem;margin-bottom:1.3rem;align-items:flex-start}
+.c-ico{width:42px;height:42px;border:2px solid rgba(200,16,46,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c-ico svg{width:18px;height:18px;stroke:var(--red);fill:none;stroke-width:1.8}
+.c-label{font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.2rem}
+.c-val{font-size:0.93rem;color:var(--white);font-weight:500}
+
+/* CONTACT */
+#contact{background:var(--black)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+.form-group{margin-bottom:1.1rem}
+.form-group label{display:block;font-size:0.72rem;font-weight:700;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:0.85rem 1rem;background:var(--black3);border:1px solid var(--gray2);color:var(--white);font-family:var(--sans);font-size:0.92rem;outline:none;transition:border-color 0.2s;border-radius:0;appearance:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--red)}
+.form-group select option{background:var(--black3)}
+.form-group textarea{resize:vertical;min-height:130px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{background:var(--red);color:var(--white);border:none;padding:1rem 2.5rem;font-family:var(--sans);font-weight:700;font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;width:100%;border-radius:0;transition:background 0.2s;margin-top:0.5rem}
+.btn-submit:hover{background:var(--red-light)}
+.call-box{background:var(--red);padding:1.2rem 1.5rem;margin-top:1.5rem}
+.call-box .label{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:0.3rem}
+.call-box .num{font-size:1.3rem;font-weight:600;color:var(--white)}
+.wa-box{background:var(--black3);border:1px solid var(--gray2);padding:1.2rem 1.5rem;margin-top:0.5rem}
+.wa-box .label{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem}
+.wa-box .num{font-size:1.2rem;font-weight:500;color:var(--white)}
+
+/* FOOTER */
+footer{background:var(--black2);border-top:2px solid var(--red);padding:3.5rem 6vw 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+.footer-logo{font-family:var(--serif);font-size:2rem;color:var(--white);text-decoration:none;letter-spacing:2px;display:block;margin-bottom:0.7rem}
+.footer-logo span{color:var(--red)}
+.footer-tagline{font-size:0.86rem;color:var(--muted);line-height:1.75;max-width:250px;font-weight:300}
+.footer-col h4{font-size:0.72rem;font-weight:700;color:var(--red);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.1rem;display:flex;align-items:center;gap:0.5rem}
+.footer-col h4::before{content:'';width:14px;height:2px;background:var(--red)}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:0.5rem}
+.footer-col ul li a{color:var(--muted);text-decoration:none;font-size:0.86rem;transition:color 0.2s;font-weight:300}
+.footer-col ul li a:hover{color:var(--red)}
+.footer-bottom{background:var(--black2);border-top:1px solid var(--gray2);padding:1.2rem 6vw;display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;color:var(--muted)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-tag{animation:fadeUp 0.5s ease both 0.1s}
+.hero h1{animation:fadeUp 0.6s ease both 0.25s}
+.hero-sub{animation:fadeUp 0.6s ease both 0.4s}
+.hero-btns{animation:fadeUp 0.6s ease both 0.55s}
+.urgent-strip{animation:fadeUp 0.6s ease both 0.7s}
+
+/* WHATSAPP FLOATING BUTTON */
+.whatsapp-float{position:fixed;bottom:25px;right:25px;z-index:300;width:60px;height:60px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.4);cursor:pointer;transition:all 0.3s;animation:floatPulse 3s ease-in-out infinite}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,0.6)}
+.whatsapp-float svg{width:32px;height:32px;fill:white}
+@keyframes floatPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .hero-photo-strip{display:none}.hero-bg-img{opacity:0.12}
+  .services-grid,.extra-grid,.contact-grid{grid-template-columns:1fr}
+  .services-intro{grid-template-columns:1fr}.services-intro-right p{text-align:left;margin-left:0}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .process-row{grid-template-columns:1fr 1fr}
+  .photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .photo-cell.wide,.photo-cell.tall{grid-column:auto;grid-row:auto}.photo-cell{height:200px}
+  .location-grid{grid-template-columns:1fr}
+  .video-grid{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr 1fr;gap:2rem}
+  .craft-sub{grid-template-columns:1fr 1fr}
+  nav{padding:0 4vw}.nav-links{display:none}
+  section{padding:4rem 5vw}
+  .urgent-banner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>Luqman</span> Printers</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#extra-services">Design & Visits</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a class="nav-cta" href="#contact">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-img"></div>
+    <div class="hero-bg-grad"></div>
+    <div class="hero-bg-line"></div>
+  </div>
+  <div class="hero-photo-strip">
+    <div class="strip-photo"><img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=600&q=80" alt="offset printing press"></div>
+    <div class="strip-divider"></div>
+    <div class="strip-photo"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80" alt="graphic design"></div>
+    <div class="strip-divider"></div>
+    <div class="strip-photo"><img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80" alt="craft items"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">Kolonnawa, Sri Lanka · Premium Print Studio</div>
+    <h1>PRINT<br><span class="red">BOLD.</span><br>CRAFT<br>SMART.</h1>
+    <p class="hero-sub">Premium offset & digital printing, expert graphic design, and eco-friendly handmade craft items. We visit you, we design for you, and deliver to your doorstep — on time, every time.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-red">Explore Services</a>
+      <a href="#contact" class="btn-ghost">Get a Free Quote</a>
+    </div>
+    <div class="urgent-strip">
+      <div class="urgent-badge">Urgent Orders Welcome</div>
+      <span class="urgent-text">Same-day & next-day printing available. Call us now.</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat"><div class="stat-num">5000+</div><div class="stat-label">Happy Clients</div></div>
+  <div class="stat"><div class="stat-num">48h</div><div class="stat-label">Avg. Turnaround</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Client Satisfaction</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro">
+    <div>
+      <div class="section-tag">What we offer</div>
+      <h2 class="section-title">OUR CORE<br>SERVICES</h2>
+    </div>
+    <div class="services-intro-right">
+      <p>Professional printing solutions — from offset & digital printing to complete branding packages, packaging solutions, merchandise, events, and eco-friendly handcrafted items.</p>
+    </div>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+      </div>
+      <div class="service-title">OFFSET PRINTING</div>
+      <p class="service-desc">High-volume, photographic-quality printing. Superior colour accuracy with CMYK & Pantone. The gold standard for bulk commercial runs.</p>
+      <ul class="service-list">
+        <li>Books, magazines & catalogues</li>
+        <li>Brochures & leaflets</li>
+        <li>Packaging & labels</li>
+        <li>Letterheads & stationery</li>
+        <li>Posters & large format printing</li>
+        <li>Calendars, diaries & planners</li>
+        <li>Corporate gift printing</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <div class="service-title">DIGITAL PRINTING</div>
+      <p class="service-desc">Fast, flexible & cost-effective. Ideal for short runs, personalised materials, proofs, and urgent same-day printing needs.</p>
+      <ul class="service-list">
+        <li>Business cards & flyers</li>
+        <li>Event invitations & programs</li>
+        <li>Certificates & awards</li>
+        <li>Roll-up & pull-up banners</li>
+        <li>Merchandise printing (T-shirts, mugs)</li>
+        <li>Stickers & labels</li>
+        <li>Variable data printing</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="service-title">CRAFT ITEMS</div>
+      <p class="service-desc">Handmade with care from 100% recycled boards and paper. Each piece is unique, eco-conscious, and ideal for gifts and keepsakes.</p>
+      <div class="craft-sub">
+        <div class="craft-sub-item">
+          <div class="craft-sub-icon">🖼️</div>
+          <div class="craft-sub-name">Photo Frames</div>
+        </div>
+        <div class="craft-sub-item">
+          <div class="craft-sub-icon">🎁</div>
+          <div class="craft-sub-name">Gift Boxes</div>
+        </div>
+        <div class="craft-sub-item">
+          <div class="craft-sub-icon">🍵</div>
+          <div class="craft-sub-name">Tea Boxes</div>
+        </div>
+      </div>
+      <p class="service-desc" style="margin-top:1rem;font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.07);padding-top:0.8rem">All items handcrafted from recycled boards & paper — zero waste, 100% handmade.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXTRA SERVICES -->
+<section id="extra-services">
+  <div class="section-tag">More Services</div>
+  <h2 class="section-title">COMPLETE<br>SOLUTIONS</h2>
+  <p class="section-sub">From branding to packaging, events to merchandise — we offer comprehensive printing solutions for every business need.</p>
+  <div class="extra-grid">
+
+    <div class="extra-card">
+      <div class="extra-label">Creative Studio</div>
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M3 19l4-8 4 4 4-6 6 10H3z"/></svg>
+      </div>
+      <div class="extra-title">GRAPHIC DESIGNING</div>
+      <p class="extra-desc">Our in-house creative team transforms your ideas into stunning visual identities and print-ready artwork — from logo to final layout, we handle everything.</p>
+      <ul class="extra-points">
+        <li>Logo & brand identity design</li>
+        <li>Complete branding & identity packages</li>
+        <li>Packaging design & solutions</li>
+        <li>Brochure, flyer & leaflet layout</li>
+        <li>Label design & sticker solutions</li>
+        <li>Pre-press & print-ready file preparation</li>
+      </ul>
+    </div>
+
+    <div class="extra-card">
+      <div class="extra-label">Personal Service</div>
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="extra-title">DOORSTEP DELIVERY & VISITS</div>
+      <p class="extra-desc">We bring our services to you — from in-person design consultations to doorstep delivery anywhere in Sri Lanka. Complete convenience, professional results.</p>
+      <ul class="extra-points">
+        <li>In-person design consultation at your premises</li>
+        <li>Live design revisions until 100% satisfied</li>
+        <li>Event printing — banners, backdrops, signage</li>
+        <li>Corporate & gift printing solutions</li>
+        <li>Merchandise printing — T-shirts, mugs, caps</li>
+        <li>Doorstep delivery across Sri Lanka</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- URGENT BANNER -->
+<div class="urgent-banner">
+  <div>
+    <h3>⚡ URGENT ORDERS UNDERTAKEN</h3>
+    <p>Tight deadline? No problem. We specialise in rush printing with same-day and next-day turnaround. Quality never suffers — even under pressure.</p>
+  </div>
+  <a href="#contact" class="btn-white">Place Urgent Order →</a>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery" style="padding-bottom:0">
+  <div class="gallery-intro">
+    <div class="section-tag">Our Work</div>
+    <h2 class="section-title">INK, CRAFT<br>& CREATIVITY</h2>
+  </div>
+</section>
+
+<div class="photo-grid">
+  <div class="photo-cell wide">
+    <img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=900&q=80" alt="Offset printing press">
+    <div class="photo-overlay"><span class="photo-label">Offset Printing Press</span></div>
+  </div>
+  <div class="photo-cell">
+    <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80" alt="digital printing">
+    <div class="photo-overlay"><span class="photo-label">Digital Printing</span></div>
+  </div>
+  <div class="photo-cell">
+    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80" alt="handmade items">
+    <div class="photo-overlay"><span class="photo-label">Handmade Craft Items</span></div>
+  </div>
+  <div class="photo-cell tall">
+    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80" alt="graphic design">
+    <div class="photo-overlay"><span class="photo-label">Graphic Design</span></div>
+  </div>
+  <div class="photo-cell">
+    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80" alt="colour design">
+    <div class="photo-overlay"><span class="photo-label">Colour Precision</span></div>
+  </div>
+  <div class="photo-cell">
+    <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&q=80" alt="print products">
+    <div class="photo-overlay"><span class="photo-label">Print Products</span></div>
+  </div>
+  <div class="photo-cell">
+    <img src="https://images.unsplash.com/photo-1609743522653-52354461eb27?w=600&q=80" alt="business cards">
+    <div class="photo-overlay"><span class="photo-label">Business Cards</span></div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div class="video-section">
+  <div class="section-tag" style="margin-bottom:0.4rem">See It In Action</div>
+  <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);color:var(--white);letter-spacing:1px;margin-bottom:0.5rem">PRINTING IN MOTION</h2>
+  <p class="vsub">Watch how precision meets craft in every press and fold.</p>
+  <div class="video-grid">
+    <div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/XDhSgCGMlv0" title="Offset printing process" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="video-caption">How offset printing works — the full press process explained</p>
+    </div>
+    <div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/4pVp9BT9OtU" title="Digital printing demo" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="video-caption">Digital printing — speed, colour, and versatility</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-tag">How it works</div>
+  <h2 class="section-title">FROM IDEA<br>TO YOUR HANDS</h2>
+  <div class="process-row">
+    <div class="process-step">
+      <div class="process-arrow"></div>
+      <div class="p-num">01</div>
+      <div class="p-title">Share Your Idea</div>
+      <p class="p-desc">Tell us your requirements — quantity, size, finish, design brief, or craft type. Call, WhatsApp or fill the quote form.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-arrow"></div>
+      <div class="p-num">02</div>
+      <div class="p-title">Quote & Design</div>
+      <p class="p-desc">We provide a transparent quote within hours. Our designers create your artwork — or we visit you in person.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-arrow"></div>
+      <div class="p-num">03</div>
+      <div class="p-title">You Approve</div>
+      <p class="p-desc">Review your proof digitally or as a physical sample. We revise until you are 100% satisfied — no compromise.</p>
+    </div>
+    <div class="process-step">
+      <div class="p-num">04</div>
+      <div class="p-title">Print & Deliver</div>
+      <p class="p-desc">We print, quality-check, and deliver to your door — on time, every time. Urgent? We go even faster.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION / MAP -->
+<section id="location">
+  <div class="section-tag">Find Us</div>
+  <h2 class="section-title" style="margin-bottom:2.5rem">VISIT OUR<br>STUDIO</h2>
+  <div class="location-grid">
+    <div>
+      <div class="map-tag">📍 Our Location — Kolonnawa, Sri Lanka</div>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9!2d79.8975!3d6.9331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2596d3e5d1b85%3A0x5f251c3b95cf648a!2sKolonnawa%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Luqman Printers — Kolonnawa, Sri Lanka">
+        </iframe>
+      </div>
+      <p class="map-hint">Hover map for full colour · Click to open in Google Maps</p>
+    </div>
+    <div>
+      <div style="margin-bottom:1.5rem">
+        <div class="section-tag" style="margin-bottom:0.5rem">Contact Details</div>
+        <p style="font-size:0.9rem;color:var(--muted);font-weight:300;line-height:1.75">Walk in, call us, or drop a message — we're always ready to help with your printing and design needs.</p>
+      </div>
+      <div class="c-detail">
+        <div class="c-ico"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <div><div class="c-label">Address</div><div class="c-val">174/32/1 IDH Rd, Salamulla, Kolonnawa</div></div>
+      </div>
+      <div class="c-detail">
+        <div class="c-ico"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 10.8 19.79 19.79 0 01.1 2.12 2 2 0 012.08 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg></div>
+        <div><div class="c-label">Phone / WhatsApp</div><div class="c-val">077 375 2380 / 076 001 0844</div></div>
+      </div>
+      <div class="c-detail">
+        <div class="c-ico"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="c-label">Email</div><div class="c-val">luqmanprinters@gmail.com</div></div>
+      </div>
+      <div class="c-detail">
+        <div class="c-ico"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="c-label">Working Hours</div><div class="c-val">Monday – Saturday: 8:00 AM – 6:00 PM</div></div>
+      </div>
+      <div class="c-detail">
+        <div class="c-ico"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div><div class="c-label">Doorstep Delivery</div><div class="c-val">Available — Island-wide delivery across Sri Lanka</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="section-tag">Get in touch</div>
+      <h2 class="section-title">LET'S<br>CREATE<br>TOGETHER</h2>
+      <p class="section-sub">Fill the form and we'll respond within hours. For urgent orders, call us directly — we're always on standby.</p>
+      <div class="call-box"><div class="label">⚡ Urgent? Call Now</div><div class="num">077 375 2380</div></div>
+      <div class="wa-box"><div class="label">WhatsApp Us</div><div class="num">076 001 0844</div></div>
+    </div>
+    <div>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="Kasun"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Perera"></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
+      <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+94 77 000 0000"></div>
+      <div class="form-group">
+        <label>Service Required</label>
+        <select>
+          <option value="">Select a service…</option>
+          <option>Offset Printing</option>
+          <option>Digital Printing</option>
+          <option>Branding & Identity Packages</option>
+          <option>Packaging Solutions</option>
+          <option>Labeling & Sticker Solutions</option>
+          <option>Corporate & Gift Printing</option>
+          <option>Merchandise Printing</option>
+          <option>Event Printing</option>
+          <option>Large Format Printing</option>
+          <option>Craft Items — Photo Frames</option>
+          <option>Craft Items — Gift Boxes</option>
+          <option>Craft Items — Tea Boxes</option>
+          <option>Graphic Designing</option>
+          <option>Home Visit Design Consultation</option>
+          <option>Urgent Order</option>
+          <option>Multiple / Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Is this an urgent order?</label>
+        <select>
+          <option>No — standard turnaround</option>
+          <option>Yes — same day</option>
+          <option>Yes — next day</option>
+          <option>Yes — within 48 hours</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Project Details</label><textarea placeholder="Describe your requirements — quantity, size, finish, deadline, design brief, reference images, etc."></textarea></div>
+      <button class="btn-submit">Send Message & Get Quote →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <a class="footer-logo" href="#"><span>Luqman</span> Printers</a>
+    <p class="footer-tagline">Premium offset & digital printing, branding, packaging, merchandise, events, graphic design, home visits, and eco-friendly handmade crafts. Serving Kolonnawa & all of Sri Lanka.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Printing</h4>
+    <ul>
+      <li><a href="#services">Offset Printing</a></li>
+      <li><a href="#services">Digital Printing</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Craft & Design</h4>
+    <ul>
+      <li><a href="#services">Photo Frames</a></li>
+      <li><a href="#services">Gift Boxes</a></li>
+      <li><a href="#services">Tea Boxes</a></li>
+      <li><a href="#extra-services">Graphic Designing</a></li>
+      <li><a href="#extra-services">Home Visits</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Info</h4>
+    <ul>
+      <li><a href="#process">Our Process</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#location">Find Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Luqman Printers · Kolonnawa, Sri Lanka · Instagram: @luqman_printers</span>
+  <span>Urgent orders: <strong style="color:var(--red)">077 375 2380</strong></span>
+</div>
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/94760010844?text=Hi%20Luqman%20Printers,%20I%20would%20like%20to%20inquire%20about%20your%20printing%20services" 
+   class="whatsapp-float" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+  </svg>
+</a>
+
+</body>
+</html>
